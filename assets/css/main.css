@@ -3,6 +3,14 @@ body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+/**
+ * Canvas.
+ */
+ canvas.canvas {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+ }
 
 /**
  * Header.
@@ -12,11 +20,11 @@ header {
     padding: 2rem;
 }
 
-div.header-1 {
+div#header-1 {
     font-size: 3rem;    
 }
 
-div.header-2 {
+div#header-2 {
     font-size: 1.2rem;    
 }
 
