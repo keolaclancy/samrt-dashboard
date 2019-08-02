@@ -2,9 +2,13 @@
  /*================Creating a canvas=================*/
  var canvas = document.getElementById('canvas-1');
  gl = canvas.getContext('experimental-webgl'); 
+ 
+ if (gl === null) {
+    // Add error flashbag.
+    setFlashbag('error', 'Unable to initialize WebGL. Your browser or machine may not support it.');
+ }
 
- /*==========Defining and storing the geometry=======*/
-
+ // Display one point in the center.
  var vertices = [
     -0.5,0.5,0.0,
     0.0,0.5,0.0,

@@ -1,0 +1,12 @@
+a.close {
+    text-decoration: none;
+    position: relative;
+    left: 1rem;
+    color:black;
+    opacity: 0.4;
+    z-index: 1;
+}
+a.close:hover {
+    opacity: 1;
+    color: white
+}

@@ -5,7 +5,7 @@
 // Wait for dom ready.
 document.addEventListener('DOMContentLoaded', (event) => {
     // Declare array of js scripts that should be fired.
-    var scripts = ['webgl.js'];
+    var scripts = ['flashbag.js', 'webgl.js'];
 
     // Add <script> tag to the dom.
     var i = 0;
