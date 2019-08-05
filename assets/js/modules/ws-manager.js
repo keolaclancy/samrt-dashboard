@@ -1,5 +1,5 @@
 /**
- * GEt json response for an endpoint
+ * Get json response for an endpoint
  * @param {string} url
  * @param {array} params
  * @returns {} json response.
@@ -19,7 +19,6 @@ function getEndpointResponse(url, params) {
             }
             else {
                 if (request.status === 429) {
-                    console.log(request);
                     reject(Error('too many requests')); // Too mmany
                 }
                 reject(Error(request.statusText)); // status is not 200 OK, so reject
@@ -51,8 +50,7 @@ function buildUrlParams(url, params) {
         params_string.push(element.join('='));
     });
 
-    url = url.concat('?').concat(params_string.join('&'));
+    url = url + '?' + params_string.join('&');
 
-    console.log(url);
     return url;
 }
