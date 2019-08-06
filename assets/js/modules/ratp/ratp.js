@@ -3,13 +3,12 @@
 
 (function () {
 
-    // Module name.
+    // Module name, config and css.
     let module_name = 'ratp';
-
-    // Add the module css.
+    let ratp = config.api.ratp;
     addCss();
 
-    let promise = getEndpointResponse('https://api-ratp.pierre-grimaud.fr/v4/schedules/metros/6/quai-de-la-gare/A');
+    let promise = getEndpointResponse(ratp.endpoint + '/schedules/metros/6/quai-de-la-gare/A');
     promise.then((data) => {
         return buildMarkup(JSON.parse(data));
     }, (error) => {

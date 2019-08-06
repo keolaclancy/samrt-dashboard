@@ -7,13 +7,12 @@
 
 (function () {
 
-    // Module name.
+    // Module name, config and css.
     let module_name = 'weather';
-
-    // Add the module css.
+    let weather = config.api.weather;
     addCss();
 
-    let promise = getEndpointResponse('https://fcc-weather-api.glitch.me/api/current', { lat: 48.85, lon: 2.35 });
+    let promise = getEndpointResponse(weather.endpoint, { lat: 48.85, lon: 2.35 });
     promise.then((data) => {
         return buildMarkup(JSON.parse(data));
     }, (error) => {

@@ -1,7 +1,6 @@
 // Feed from API.
 // Create item element.
 
-
 // Wait for dom ready.
 document.addEventListener('DOMContentLoaded', (event) => {
     // Declare array of js scripts that should be fired.
