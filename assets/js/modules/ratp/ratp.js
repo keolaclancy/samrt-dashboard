@@ -6,7 +6,7 @@
     // Module name, config and css.
     let module_name = 'ratp';
     let ratp = config.api.ratp;
-    addCss();
+    addCss(module_name);
 
     let promise = getEndpointResponse(ratp.endpoint + '/schedules/metros/6/quai-de-la-gare/A');
     promise.then((data) => {
@@ -39,16 +39,4 @@
         container.appendChild(item);
     }
 
-    /**
-     * Add module css.
-     */
-    function addCss() {
-        var link_tag = document.createElement("link");
-        link_tag.setAttribute("rel", "stylesheet");
-        link_tag.setAttribute("type", "text/css");
-        link_tag.setAttribute("media", "screen");
-        link_tag.setAttribute("href", "assets/js/modules/" + module_name + "/" + module_name + ".css");
-
-        document.head.appendChild(link_tag);
-    }
 }());

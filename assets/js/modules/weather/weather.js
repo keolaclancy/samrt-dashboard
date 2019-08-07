@@ -10,7 +10,7 @@
     // Module name, config and css.
     let module_name = 'weather';
     let weather = config.api.weather;
-    addCss();
+    addCss(module_name);
 
     let promise = getEndpointResponse(weather.endpoint, { lat: 48.85, lon: 2.35 });
     promise.then((data) => {
@@ -43,20 +43,6 @@
         let container = document.getElementById('item-container');
         container.appendChild(item);
     }
-
-    /**
-     * Add module css.
-     */
-    function addCss() {
-        var link_tag = document.createElement("link");
-        link_tag.setAttribute("rel", "stylesheet");
-        link_tag.setAttribute("type", "text/css");
-        link_tag.setAttribute("media", "screen");
-        link_tag.setAttribute("href", "assets/js/modules/" + module_name + "/" + module_name + ".css");
-
-        document.head.appendChild(link_tag);
-    }
-
 
 }());
 
