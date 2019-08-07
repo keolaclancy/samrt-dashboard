@@ -24,7 +24,7 @@ config = {
             endpoint: 'https://api-ratp.pierre-grimaud.fr/v4',
         },
         unsplash : {
-            endpoint: '',
+            endpoint: 'https://api.unsplash.com',
             access: 'YOUR_ACCESS_KEY',
         },
     },

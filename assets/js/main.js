@@ -4,7 +4,6 @@
 // Wait for dom ready.
 document.addEventListener('DOMContentLoaded', (event) => {
     // Get the modules to load their JS.
-    console.log(config);
     let modules = config.modules;
 
     // Add <script> tag to the dom.
