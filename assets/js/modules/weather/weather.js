@@ -16,8 +16,7 @@
     promise.then((data) => {
         return buildMarkup(JSON.parse(data));
     }, (error) => {
-        console.log('Promise rejected.');
-        console.log(error.message);
+        setFlashbag('error', 'Could not retrieve data from the ' + module_name + ' webservice');
     });
 
     /**
@@ -25,9 +24,11 @@
      */
     function buildMarkup(data) {
         // Create the markup of the weather tile.
+        let img_markup = (typeof data.weather[0].icon !== 'undefined') ? `<img src="${data.weather[0].icon}"></img>` : '';
+
         let markup = `
     <h3 class="weather-title">${data.name}</h3>
-    <img src="${data.weather[0].icon}"></img>
+    ${img_markup}
     <div>${data.main.temp}</div>
     <div>max: ${data.main.temp_max}</div>
     <div>min:${data.main.temp_min}</div>

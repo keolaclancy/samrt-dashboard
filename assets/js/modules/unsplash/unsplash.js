@@ -21,8 +21,7 @@
 
             setBackgroundImage(JSON.parse(data));
         }, (error) => {
-            console.log('Promise rejected.');
-            console.log(error.message);
+            setFlashbag('error', 'Could not retrieve data from the ' + module_name + ' webservice');
         });
     }
     else {
@@ -39,8 +38,9 @@
         body.setAttribute("style", "background-image: url('" + data.urls.regular + "')");
 
         // Add the credits div.
+        let title = typeof data.location !== 'undefined' ? data.location.title : '';
         let markup = `
-        <div class="credit-text">${data.location.title || ''}</div>
+        <div class="credit-text">${title}</div>
         <a class="credit-link" target="_blank" href ="${data.links.html}"> Photo by ${data.user.name} / Unsplash</a>
         `;
 
@@ -49,9 +49,6 @@
         credit.innerHTML = markup;
         let footer = document.getElementById("footer");
         footer.appendChild(credit);
-        
-        // @todo : We can also change the Date/quote colors depending on the image color. (data.color)
-        console.log(data);
     }
 
     /**
