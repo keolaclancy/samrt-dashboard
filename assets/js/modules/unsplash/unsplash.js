@@ -3,7 +3,7 @@
     // Module name, config and css.
     let module_name = 'unsplash';
     let unsplash = config.api.unsplash;
-    addCss();
+    addCss(module_name);
 
     // If we don't have the local storage data.
     // Call the unsplash webservice.
@@ -11,7 +11,7 @@
         let params = {
             client_id: unsplash.access,
             orientation: 'landscape',
-            query: 'nature',
+            query: unsplash.query,
         };
 
         let promise = getEndpointResponse(unsplash.endpoint + "/photos/random", params);
@@ -40,7 +40,7 @@
 
         // Add the credits div.
         let markup = `
-        <div class="credit-text">${data.location || ''}</div>
+        <div class="credit-text">${data.location.title || ''}</div>
         <a class="credit-link" target="_blank" href ="${data.links.html}"> Photo by ${data.user.name} / Unsplash</a>
         `;
 
@@ -52,19 +52,6 @@
         
         // @todo : We can also change the Date/quote colors depending on the image color. (data.color)
         console.log(data);
-    }
-
-    /**
-    * Add module css.
-    */
-    function addCss() {
-        var link_tag = document.createElement("link");
-        link_tag.setAttribute("rel", "stylesheet");
-        link_tag.setAttribute("type", "text/css");
-        link_tag.setAttribute("media", "screen");
-        link_tag.setAttribute("href", "assets/js/modules/" + module_name + "/" + module_name + ".css");
-
-        document.head.appendChild(link_tag);
     }
 
     /**

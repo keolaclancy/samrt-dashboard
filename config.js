@@ -26,6 +26,7 @@ config = {
         unsplash : {
             endpoint: 'https://api.unsplash.com',
             access: 'YOUR_ACCESS_KEY',
+            query: 'nature',
         },
     },
 }
