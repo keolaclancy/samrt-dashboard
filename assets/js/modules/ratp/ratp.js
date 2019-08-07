@@ -12,8 +12,7 @@
     promise.then((data) => {
         return buildMarkup(JSON.parse(data));
     }, (error) => {
-        console.log('Promise rejected.');
-        console.log(error.message);
+        setFlashbag('error', 'Could not retrieve data from the ' + module_name + ' webservice');
     });
 
     /**

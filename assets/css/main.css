@@ -20,6 +20,7 @@ body {
 header {
     text-align: center;
     padding: 2rem;
+    background-color: rgba(255,255,255,0.5);
 }
 
 div#header-1 {
@@ -41,9 +42,22 @@ div.item-container {
 
 /* The tile */
 div.item {
-    background-color: rgb(103, 180, 243);
+    background-color: rgba(103, 180, 243, 0.85);
     min-height: 18rem; /* height should change depending on screen height */
     min-width: 18rem; /* width should change depending on screen width */
     margin: 0.5rem;
     padding: 0.8rem;
+    animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.3s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+    }
 }
