@@ -3,20 +3,15 @@
 
 // Wait for dom ready.
 document.addEventListener('DOMContentLoaded', (event) => {
-    // Declare array of js scripts that should be fired.
-    var scripts = [
-        'flashbag.js',
-        'modules/ws-manager.js',
-        'modules/weather/weather.js',
-        'modules/ratp/ratp.js',
-    ];
+    // Get the modules to load their JS.
+    let modules = config.modules;
 
     // Add <script> tag to the dom.
     var i = 0;
-    for (i = 0; i < scripts.length; i++) {
+    for (i = 0; i < modules.length; i++) {
         var script_tag = document.createElement("script");
         var script_att = document.createAttribute("src");
-        script_att.value = 'assets/js/' + scripts[i];
+        script_att.value = "assets/js/modules/" + modules[i] + "/" + modules[i] + ".js";
         script_tag.setAttributeNode(script_att);
         document.body.appendChild(script_tag);
     }

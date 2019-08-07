@@ -1,0 +1,24 @@
+body.unsplash {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div.credit {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.2);
+    max-width: 15rem;
+    margin: 1rem;
+    padding: 0.4rem;
+}
+div.credit-text {
+    color: rgba(255,255,255,0.6);;
+}
+
+a.credit-link {
+    color:rgba(255,255,255,0.6);
+    text-decoration: none;
+}
+a.credit-link:hover {
+    color: wheat;
+}

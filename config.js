@@ -2,6 +2,18 @@
 // It is overriden by config-dev.js
 config = {
     /**
+     * List of modules.
+     * Used to autoload JS files.
+     */
+    modules: [
+        'ws-manager',
+        'flashbag',
+        'weather',
+        'ratp',
+        'unsplash',
+    ],
+
+    /**
      * API Configs.
      */
     api : {
@@ -10,6 +22,10 @@ config = {
         },
         ratp : {
             endpoint: 'https://api-ratp.pierre-grimaud.fr/v4',
+        },
+        unsplash : {
+            endpoint: 'https://api.unsplash.com',
+            access: 'YOUR_ACCESS_KEY',
         },
     },
 }
