@@ -54,3 +54,33 @@ function buildUrlParams(url, params) {
 
     return url;
 }
+
+    /**
+     * @param {data: object}
+     */
+    function saveToLocalStorage(data, module_name) {
+        // Expires after 3600 seconds.
+        data['expire_time'] = Math.floor(Date.now() / 1000) + 3600;
+
+        // Save the data.
+        localStorage.setItem(module_name, JSON.stringify(data));
+    }
+
+    /**
+     * Returns local storage, or null if expired.
+     */
+    function getFromLocalStorage(module_name) {
+        // If the storage is too old, return NULL
+        let local_storage = JSON.parse(localStorage.getItem(module_name));
+        let now = Math.floor(Date.now() / 1000);
+
+        if (local_storage !== null) {
+            // Storage is not expired.
+            if (local_storage.expire_time > now) {
+                return localStorage.getItem(module_name);
+            }
+            // Storage has expired.
+            localStorage.removeItem(module_name);
+        }
+        return null;
+    }

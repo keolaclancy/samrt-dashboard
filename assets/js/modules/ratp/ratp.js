@@ -7,8 +7,13 @@
     let module_name = 'ratp';
     let ratp = config.api.ratp;
     addCss(module_name);
+    let options = {
+        line: 6,
+        station: 'quai-de-la-gare',
+        direction: 'A',
+    };
 
-    let promise = getEndpointResponse(ratp.endpoint + '/schedules/metros/6/quai-de-la-gare/A');
+    let promise = getEndpointResponse(ratp.endpoint + '/schedules/metros/' + options.line + '/' + options.station + '/' + options.direction);
     promise.then((data) => {
         return buildMarkup(JSON.parse(data));
     }, (error) => {
@@ -22,9 +27,11 @@
         // Create the markup of the weather tile.
         let markup = `
     <h3 class="ratp-title">Prochain métros</h3>
-    <div>Destination: ${data.result.schedules[0].destination}</div>
-    <div>Dans: ${data.result.schedules[0].message}</div>
-    <div>Le suivant: ${data.result.schedules[1].message}</div>
+    <div>Ligne: <span class="bold">${options.line}</span></div>
+    <div>De: <span class="bold">${options.station}</span></div>
+    <div>Destination: <span class="bold">${data.result.schedules[0].destination}</span></div>
+    <div class="ratp-generic-container">Dans: <div class="digital-container"><span class="digital">${data.result.schedules[0].message}</span></div></div>
+    <div class="ratp-generic-container">Le suivant: <div class="digital-container"><span class="digital"> ${data.result.schedules[1].message}</span></div></div>
     `;
 
         // Create the item div.

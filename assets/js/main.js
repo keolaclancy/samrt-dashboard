@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Display the date and quote in the header
     displayDate();
-    displayQuote();
 })
 
 // Display the date in the header 1.
@@ -41,16 +40,9 @@ function displayDate() {
     var t = setTimeout(displayDate, 60000);
 }
 
-// Display a quote in the header 2.
-function displayQuote() {
-    // @todo : Use a text file with quotes (or api).
-    var header2 = document.getElementById('header-2');
-    header2.innerHTML = "Make it happen !";
-}
-
 /**
-     * Add module css.
-     */
+ * Add module css.
+ */
 function addCss(module_name) {
     var link_tag = document.createElement("link");
     link_tag.setAttribute("rel", "stylesheet");

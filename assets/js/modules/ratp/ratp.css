@@ -1,4 +1,26 @@
+@font-face {
+    font-family: "Digital";
+    src: url("fonts/digital-7-mono.ttf");
+    }
+
 .ratp-title {
     color: white;
     text-align: center;
+}
+
+.digital {
+    font-family: 'Digital';
+    font-size: 3rem;
+    color: yellowgreen;
+    text-shadow: 0 0 1px rgba(255, 255, 255, .8);
+}
+
+.digital-container {
+    padding: 0.4rem;
+    max-width: 17rem;
+    text-align: right;
+    background-color: rgba(97, 119, 111, 0.63);
+}
+.ratp-generic-container {
+    margin: 1rem 0 0 0;
 }
