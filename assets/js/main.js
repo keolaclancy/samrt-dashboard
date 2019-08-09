@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Display the date and quote in the header
     displayDate();
-    displayQuote();
 })
 
 // Display the date in the header 1.
@@ -39,13 +38,6 @@ function displayDate() {
     header1.innerHTML = dt.toLocaleDateString(lang, options);
     // Refresh every minute.
     var t = setTimeout(displayDate, 60000);
-}
-
-// Display a quote in the header 2.
-function displayQuote() {
-    // @todo : Use a text file with quotes (or api).
-    var header2 = document.getElementById('header-2');
-    header2.innerHTML = "Make it happen !";
 }
 
 /**

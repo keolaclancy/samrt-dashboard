@@ -28,6 +28,7 @@
         let markup = `
     <h3 class="ratp-title">Prochain métros</h3>
     <div>Ligne: <span class="bold">${options.line}</span></div>
+    <div>De: <span class="bold">${options.station}</span></div>
     <div>Destination: <span class="bold">${data.result.schedules[0].destination}</span></div>
     <div class="ratp-generic-container">Dans: <div class="digital-container"><span class="digital">${data.result.schedules[0].message}</span></div></div>
     <div class="ratp-generic-container">Le suivant: <div class="digital-container"><span class="digital"> ${data.result.schedules[1].message}</span></div></div>

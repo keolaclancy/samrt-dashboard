@@ -10,3 +10,8 @@ a.close:hover {
     opacity: 1;
     color: white
 }
+
+a.default {
+    text-decoration: underline;
+    color:white;
+}
