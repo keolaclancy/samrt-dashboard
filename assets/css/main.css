@@ -2,6 +2,7 @@ body {
     background-color: rgb(219, 219, 219);
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgba(195, 195, 195, 0.5);
 }
 
 /**
@@ -20,7 +21,8 @@ body {
 header {
     text-align: center;
     padding: 2rem;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: whitesmoke;
 }
 
 div#header-1 {
@@ -37,12 +39,13 @@ div#header-2 {
 div.item-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    width: 90%;
+    margin: auto;
 }
 
 /* The tile */
 div.item {
-    background-color: rgba(103, 180, 243, 0.85);
+    background-color: rgba(0, 0, 0, 0.7);
     min-height: 18rem; /* height should change depending on screen height */
     min-width: 18rem; /* width should change depending on screen width */
     margin: 0.5rem;
@@ -50,7 +53,9 @@ div.item {
     animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
-	animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 22px 1px rgba(255,255,255,0.5);
 }
 
 @keyframes fadeInOpacity {
@@ -60,4 +65,8 @@ div.item {
 	100% {
 		opacity: 1;
     }
+}
+
+.bold {
+    font-weight: bold;
 }

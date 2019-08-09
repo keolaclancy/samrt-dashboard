@@ -24,14 +24,19 @@
      */
     function buildMarkup(data) {
         // Create the markup of the weather tile.
-        let img_markup = (typeof data.weather[0].icon !== 'undefined') ? `<img src="${data.weather[0].icon}"></img>` : '';
+        let img_markup = (typeof data.weather[0].icon !== 'undefined') ? `<img class="weather-logo" src="${data.weather[0].icon}"></img>` : '';
 
         let markup = `
-    <h3 class="weather-title">${data.name}</h3>
-    ${img_markup}
-    <div>${data.main.temp}</div>
-    <div>max: ${data.main.temp_max}</div>
-    <div>min:${data.main.temp_min}</div>
+    <h3 class="weather-title">Météo</h3>
+    En ce moment à <span class="bold">${data.name}</span>
+    <div class="weather-info-container">
+        ${img_markup}
+        <div class="current-temp">${data.main.temp} C°</div>
+    </div>
+    <div class="weather-info-container">
+        <div class="weather-elements">min:${data.main.temp_min} C°</div>
+        <div class="weather-elements">max: ${data.main.temp_max} C°</div>
+    </div>
     `;
 
         // Create the item div.

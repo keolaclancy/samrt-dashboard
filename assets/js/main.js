@@ -49,8 +49,8 @@ function displayQuote() {
 }
 
 /**
-     * Add module css.
-     */
+ * Add module css.
+ */
 function addCss(module_name) {
     var link_tag = document.createElement("link");
     link_tag.setAttribute("rel", "stylesheet");
