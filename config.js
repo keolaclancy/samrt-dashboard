@@ -11,7 +11,7 @@ config = {
         'weather',
         'ratp',
         'unsplash',
-        'quote',
+        'motd',
     ],
 
     /**
@@ -29,9 +29,8 @@ config = {
             access: 'YOUR_ACCESS_KEY',
             query: 'nature',
         },
-        quote: {
-            endpoint: 'https://quotes.rest/qod.json',
-            credits: 'https://theysaidso.com',
+        motd: {
+            endpoint: 'https://api.adviceslip.com/advice',
         }
     },
 }

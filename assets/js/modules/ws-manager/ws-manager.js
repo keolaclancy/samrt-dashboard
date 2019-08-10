@@ -58,9 +58,9 @@ function buildUrlParams(url, params) {
     /**
      * @param {data: object}
      */
-    function saveToLocalStorage(data, module_name) {
+    function saveToLocalStorage(data, module_name, keep_time = 3600) {
         // Expires after 3600 seconds.
-        data['expire_time'] = Math.floor(Date.now() / 1000) + 3600;
+        data['expire_time'] = Math.floor(Date.now() / 1000) + keep_time;
 
         // Save the data.
         localStorage.setItem(module_name, JSON.stringify(data));
