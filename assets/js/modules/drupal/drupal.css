@@ -1,0 +1,31 @@
+/**
+scores between 0 and 4 are considered Not Critical
+5 to 9 is considered Less Critical
+10 to 14 is considered Moderately Critical
+15 to 19 is considered Critical
+20 to 25 is considered Highly Critical
+*/
+span.drupal-criticity {
+    border-radius: 5px;
+    color: black;
+}
+
+span.not-critical {
+    background-color:green;
+}
+
+span.less-critical {
+    background-color:#377FC7;
+}
+
+span.moderately-critical {
+    background-color:#fbf03b;
+}
+
+span.critical {
+    background-color:#e3901b;
+}
+
+span.highly-critical {
+    background-color:#d32101;
+}
