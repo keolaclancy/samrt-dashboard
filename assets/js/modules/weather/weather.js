@@ -4,14 +4,12 @@
 // Request: https://fcc-weather-api.glitch.me/api/current?lat=35&lon=139 
 // Response: { "coord":{ "lon":159, "lat":35 }, "weather":[ { "id":500, "main":"Rain", "description":"light rain", "icon":"https://cdn.glitch.com/6e8889e5-7a72-48f0-a061-863548450de5%2F10n.png?1499366021399" } ], "base":"stations", "main":{ "temp":22.59, "pressure":1027.45, "humidity":100, "temp_min":22.59, "temp_max":22.59, "sea_level":1027.47, "grnd_level":1027.45 }, "wind":{ "speed":8.12, "deg":246.503 }, "rain":{ "3h":0.45 }, "clouds":{ "all":92 }, "dt":1499521932, "sys":{ "message":0.0034, "sunrise":1499451436, "sunset":1499503246 }, "id":0, "name":"", "cod":200 }
 
-
 (function () {
-
     // Module name, config and css.
     let module_name = 'weather';
     let weather = config.api.weather;
     addCss(module_name);
-    let params = {lat: 48.85, lon: 2.35};
+    let params = { lat: 48.85, lon: 2.35 };
 
     let promise = getData(weather.endpoint, params, module_name, 60);
     promise.then((data) => {
@@ -21,12 +19,13 @@
         setFlashbag('error', 'Could not retrieve data from the ' + module_name + ' webservice');
     });
 
-
     /**
-     * Build the markup.
+     * Builds the markup.
+     *
+     * @param {object} data The data to build the markup with.
      */
     function buildMarkup(data) {
-        // Create the markup of the weather tile.
+        // Create the markup of the tile.
         let img_markup = (typeof data.weather[0].icon !== 'undefined') ? `<img class="weather-logo" src="${data.weather[0].icon}"></img>` : '';
 
         let markup = `
@@ -52,6 +51,5 @@
         let container = document.getElementById('item-container');
         container.appendChild(item);
     }
-
 }());
 

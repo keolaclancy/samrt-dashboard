@@ -22,6 +22,8 @@
 
     /**
      * Display the background image from the unsplash webservice.
+     *
+     * @param {object} data The data to be used to display the background.
      */
     function setBackgroundImage(data) {
         // Add the background to the body.
@@ -42,35 +44,4 @@
         let footer = document.getElementById("footer");
         footer.appendChild(credit);
     }
-
-    // /**
-    //  * @param {data: object}
-    //  */
-    // function saveToLocalStorage(data) {
-    //     // Expires after 3600 seconds.
-    //     data['expire_time'] = Math.floor(Date.now() / 1000) + 3600;
-
-    //     // Save the data.
-    //     localStorage.setItem('unsplash', JSON.stringify(data));
-    // }
-
-    // /**
-    //  * Returns local storage, or null if expired.
-    //  */
-    // function getFromLocalStorage() {
-    //     // If the storage is too old, return NULL
-    //     let local_storage = JSON.parse(localStorage.getItem('unsplash'));
-    //     let now = Math.floor(Date.now() / 1000);
-
-    //     if (local_storage !== null) {
-    //         // Storage is not expired.
-    //         if (local_storage.expire_time > now) {
-    //             return localStorage.getItem('unsplash');
-    //         }
-    //         // Storage has expired.
-    //         localStorage.removeItem('unsplash');
-    //     }
-    //     return null;
-    // }
-
 }());

@@ -15,7 +15,7 @@
     /**
      * Prints Message of the day.
      *
-     * @param {*} data 
+     * @param {object} data The data to build the markup with.
      */
     function buildMarkup(data) {
         let motd_node = document.getElementById('header-2');

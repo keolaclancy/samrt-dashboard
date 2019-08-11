@@ -1,5 +1,3 @@
-
-// Last 5 core SA
 // https://www.drupal.org/api-d7/node.json?limit=5&sort=created&direction=DESC&type=sa&status=1&field_project=3060
 
 (function () {
@@ -27,13 +25,14 @@
     });
 
     /**
+     * Builds the markup.
      *
-     * @param {*} data 
+     * @param {object} data The data to build the markup with.
      */
     function buildMarkup(data) {
         let filtered_sa = filterSa(data.list);
 
-        // Create the markup of the weather tile.
+        // Create the markup of the tile.
         let markup = `
     <h3 class="item-title">DRUPAL Security</h3>
     <span class="list-title">Drupal Core</span>
@@ -75,7 +74,7 @@
      * Filter security advisories into Core and Contrib arrays.
      * Limit how many elements in the arrays.
      * 
-     * @param {*} sa 
+     * @param {Array} sa Array of security advisories objects.
      */
     function filterSa(sa) {
         let sa_core = [];
@@ -107,7 +106,7 @@
 
     /**
      * Returns a well formatted element to be printed.
-     * @param {*} element 
+     * @param {object} element A security advisory object.
      */
     function formatElement(element) {
         // The creation date, from timestamp to human readable date.
@@ -137,8 +136,8 @@
     /**
      * Builds individual elements for a list.
      *
-     * @param {*} element 
-     * @param {*} list_name 
+     * @param {object} element A security advisory object.
+     * @param {string} list_name The list name.
      */
     function buildListElement(element, list_name) {
         let formatted = formatElement(element);
@@ -166,11 +165,12 @@
     }
 
     /**
-     * Returns an img uri from a string.
+     * Cleans a string.
+     *
+     * @param {string} name The string to clean.
      */
     function cleanString(name) {
-        // Clean the name
-        // strlower, adding replace spaces
+        // Lower case and replace spaces.
         return name.replace(/\s+/g, '-').toLowerCase();
     }
 

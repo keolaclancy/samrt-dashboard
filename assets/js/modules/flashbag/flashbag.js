@@ -1,7 +1,7 @@
 /**
  *
- * @param {*} type
- * @param {*} message
+ * @param {string} type The type of error.
+ * @param {string} message The message to display.
  */
 function setFlashbag(type, message) {
     addCss('flashbag');

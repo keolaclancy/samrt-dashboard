@@ -23,12 +23,13 @@
     });
 
     /**
-     * Build the markup.
+     * Builds the markup.
+     *
+     * @param {object} data The data to build the markup with.
      */
     function buildMarkup(data) {
 
-        console.log(data);
-        // Create the markup of the weather tile.
+        // Create the markup of the tile.
         let markup = `
     <h3 class="item-title">Prochain métros</h3>
     <div>Ligne: <span class="bold">${options.line}</span></div>
