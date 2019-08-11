@@ -5,28 +5,20 @@
     let unsplash = config.api.unsplash;
     addCss(module_name);
 
-    // If we don't have the local storage data.
-    // Call the unsplash webservice.
-    if (getFromLocalStorage(module_name) === null) {
-        let params = {
-            client_id: unsplash.access,
-            orientation: 'landscape',
-            query: unsplash.query,
-        };
+    let url = unsplash.endpoint + "/photos/random";
+    let params = {
+        client_id: unsplash.access,
+        orientation: 'landscape',
+        query: unsplash.query,
+    };
 
-        let promise = getEndpointResponse(unsplash.endpoint + "/photos/random", params);
-        promise.then((data) => {
-            // Save only the data needed to the local storage.
-            saveToLocalStorage(JSON.parse(data), module_name);
+    let promise = getData(url, params, module_name, 3600);
+    promise.then((data) => {
 
-            setBackgroundImage(JSON.parse(data));
-        }, (error) => {
-            setFlashbag('error', 'Could not retrieve data from the ' + module_name + ' webservice');
-        });
-    }
-    else {
-        setBackgroundImage(JSON.parse(getFromLocalStorage(module_name)));
-    }
+        setBackgroundImage(data);
+    }, (error) => {
+        setFlashbag('error', 'Could not retrieve data from the ' + module_name + ' webservice');
+    });
 
     /**
      * Display the background image from the unsplash webservice.

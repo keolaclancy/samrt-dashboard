@@ -12,10 +12,12 @@
         station: 'quai-de-la-gare',
         direction: 'A',
     };
+    let url = ratp.endpoint + '/schedules/metros/' + options.line + '/' + options.station + '/' + options.direction;
 
-    let promise = getEndpointResponse(ratp.endpoint + '/schedules/metros/' + options.line + '/' + options.station + '/' + options.direction);
+    let promise = getData(url, {}, module_name, 10);
     promise.then((data) => {
-        return buildMarkup(JSON.parse(data));
+
+        buildMarkup(data);
     }, (error) => {
         setFlashbag('error', 'Could not retrieve data from the ' + module_name + ' webservice');
     });
@@ -24,6 +26,8 @@
      * Build the markup.
      */
     function buildMarkup(data) {
+
+        console.log(data);
         // Create the markup of the weather tile.
         let markup = `
     <h3 class="item-title">Prochain métros</h3>

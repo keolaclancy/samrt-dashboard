@@ -1,4 +1,39 @@
 /**
+ * Main function to retrieve data
+ * Gets data from the WS or the local Storage.
+ * 
+ * Returns a promise when data is present.
+ */
+function getData(url, params={}, module_name, keep_time=3600) {
+
+    const main_promise = new Promise((resolve, reject) => {
+
+        if (getFromLocalStorage(module_name) === null) {
+            let promise = getEndpointResponse(url, params);
+            promise.then((data) => {
+                console.log('calling WS: ' + module_name);
+    
+                // Save only the data needed to the local storage.
+                saveToLocalStorage(JSON.parse(data), module_name, keep_time);
+    
+                // return JSON.parse(data);
+                resolve(JSON.parse(getFromLocalStorage(module_name)));
+            }, (error) => {
+                setFlashbag('error', 'Could not retrieve data from the ' + module_name + ' webservice');
+                reject(Error('Could not get data'));
+            });
+        }
+        else {
+            console.log('calling locaStorage: ' + module_name);
+    
+            resolve(JSON.parse(getFromLocalStorage(module_name)));
+        }
+    });
+
+    return main_promise;
+}
+
+/**
  * Get json response for an endpoint
  * @param {string} url
  * @param {array} params
@@ -55,32 +90,32 @@ function buildUrlParams(url, params) {
     return url;
 }
 
-    /**
-     * @param {data: object}
-     */
-    function saveToLocalStorage(data, module_name, keep_time = 3600) {
-        // Expires after 3600 seconds.
-        data['expire_time'] = Math.floor(Date.now() / 1000) + keep_time;
+/**
+ * @param {data: object}
+ */
+function saveToLocalStorage(data, module_name, keep_time = 3600) {
+    // Expires after 3600 seconds.
+    data['expire_time'] = Math.floor(Date.now() / 1000) + keep_time;
 
-        // Save the data.
-        localStorage.setItem(module_name, JSON.stringify(data));
-    }
+    // Save the data.
+    localStorage.setItem(module_name, JSON.stringify(data));
+}
 
-    /**
-     * Returns local storage, or null if expired.
-     */
-    function getFromLocalStorage(module_name) {
-        // If the storage is too old, return NULL
-        let local_storage = JSON.parse(localStorage.getItem(module_name));
-        let now = Math.floor(Date.now() / 1000);
+/**
+ * Returns local storage, or null if expired.
+ */
+function getFromLocalStorage(module_name) {
+    // If the storage is too old, return NULL
+    let local_storage = JSON.parse(localStorage.getItem(module_name));
+    let now = Math.floor(Date.now() / 1000);
 
-        if (local_storage !== null) {
-            // Storage is not expired.
-            if (local_storage.expire_time > now) {
-                return localStorage.getItem(module_name);
-            }
-            // Storage has expired.
-            localStorage.removeItem(module_name);
+    if (local_storage !== null) {
+        // Storage is not expired.
+        if (local_storage.expire_time > now) {
+            return localStorage.getItem(module_name);
         }
-        return null;
+        // Storage has expired.
+        localStorage.removeItem(module_name);
     }
+    return null;
+}

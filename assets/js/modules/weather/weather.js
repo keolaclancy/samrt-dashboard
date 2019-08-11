@@ -11,13 +11,16 @@
     let module_name = 'weather';
     let weather = config.api.weather;
     addCss(module_name);
+    let params = {lat: 48.85, lon: 2.35};
 
-    let promise = getEndpointResponse(weather.endpoint, { lat: 48.85, lon: 2.35 });
+    let promise = getData(weather.endpoint, params, module_name, 60);
     promise.then((data) => {
-        return buildMarkup(JSON.parse(data));
+
+        buildMarkup(data);
     }, (error) => {
         setFlashbag('error', 'Could not retrieve data from the ' + module_name + ' webservice');
     });
+
 
     /**
      * Build the markup.
