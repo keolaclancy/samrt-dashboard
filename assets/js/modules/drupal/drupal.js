@@ -10,33 +10,21 @@
     addCss(module_name);
 
     let core_project_id = 3060;
+    let options = {
+        limit: 10,
+        type: 'sa',
+        sort: 'created',
+        direction: 'DESC',
+        status: 1,
+    };
 
-    if (getFromLocalStorage(module_name) === null) {
+    let promise = getData(sa.endpoint, options, module_name, 3600);
+    promise.then((data) => {
 
-        let options = {
-            limit: 10,
-            type: 'sa',
-            sort: 'created',
-            direction: 'DESC',
-            status: 1,
-            // field_project: 3060,
-        };
-
-        let promise = getEndpointResponse(sa.endpoint, options);
-        promise.then((data) => {
-
-            // Save only the data needed to the local storage.
-            saveToLocalStorage(JSON.parse(data), module_name);
-
-            return buildMarkup(JSON.parse(data));
-        }, (error) => {
-            setFlashbag('error', 'Could not retrieve data from the ' + module_name + ' webservice');
-        });
-
-    }
-    else {
-        buildMarkup(JSON.parse(getFromLocalStorage(module_name)));
-    }
+        buildMarkup(data);
+    }, (error) => {
+        setFlashbag('error', 'Could not retrieve data from the ' + module_name + ' webservice');
+    });
 
     /**
      *
@@ -44,8 +32,6 @@
      */
     function buildMarkup(data) {
         let filtered_sa = filterSa(data.list);
-
-        console.log(filtered_sa);
 
         // Create the markup of the weather tile.
         let markup = `
@@ -94,7 +80,7 @@
     function filterSa(sa) {
         let sa_core = [];
         let sa_contrib = [];
-        let limit =5;
+        let limit = 5;
         let i_core = 0;
         let i_contrib = 0;
 
