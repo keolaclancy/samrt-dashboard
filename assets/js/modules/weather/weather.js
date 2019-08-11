@@ -27,7 +27,7 @@
         let img_markup = (typeof data.weather[0].icon !== 'undefined') ? `<img class="weather-logo" src="${data.weather[0].icon}"></img>` : '';
 
         let markup = `
-    <h3 class="weather-title">Météo</h3>
+    <h3 class="item-title">Météo</h3>
     En ce moment à <span class="bold">${data.name}</span>
     <div class="weather-info-container">
         ${img_markup}

@@ -49,15 +49,15 @@
 
         // Create the markup of the weather tile.
         let markup = `
-    <h3 class="drupal-title">DRUPAL SECURITY</h3>
-    Drupal Core
+    <h3 class="item-title">DRUPAL Security</h3>
+    <span class="list-title">Drupal Core</span>
     <div class="sa-container">
-        <ul id="core-list">
+        <ul class="drupal-list" id="core-list">
         </ul>    
     </div>
-    Drupal Contrib
+    <span class="list-title">Drupal Contrib</span>
     <div class="sa-container">
-        <ul id="contrib-list">
+        <ul class="drupal-list" id="contrib-list">
         </ul>
     </div>
     `;
@@ -87,19 +87,29 @@
 
     /**
      * Filter security advisories into Core and Contrib arrays.
+     * Limit how many elements in the arrays.
      * 
      * @param {*} sa 
      */
     function filterSa(sa) {
         let sa_core = [];
         let sa_contrib = [];
+        let limit =5;
+        let i_core = 0;
+        let i_contrib = 0;
 
         sa.forEach(element => {
             if (element.field_project.id == core_project_id) {
-                sa_core.push(element);
+                if (i_core < limit) {
+                    sa_core.push(element);
+                }
+                i_core++;
             }
             else {
-                sa_contrib.push(element);
+                if (i_contrib < limit) {
+                    sa_contrib.push(element);
+                }
+                i_contrib++;
             }
         });
 
@@ -129,6 +139,7 @@
         let formatted = {
             created: dt.toLocaleDateString(lang, options),
             title: split_title[split_title.length - 1],
+            title_desc: split_title[0],
             criticity: split_title[1],
             sa_type: element.field_sa_type,
             link: element.url,
@@ -148,12 +159,19 @@
 
         let item = document.createElement('li');
         let markup = `
-        <li>
+        <a class="sa-link default" href="${formatted.link}">
             <div class="${list_name}-item">
-            <a class="default" href="${formatted.link}">${formatted.title}</a>
-            <span title="${formatted.criticity}" class="drupal-criticity ${cleanString(formatted.criticity)}">${formatted.sa_type}</span>
+                <div class="list-item-header">
+                    <span>${formatted.created}</span>
+                    <span class="float-right">${formatted.title}</span>
+                </div>
+                <div class="list-item-desc">
+                    <span title="${formatted.criticity}" class="drupal-criticity ${cleanString(formatted.criticity)}">${formatted.sa_type}</span>
+                    <span>${formatted.title_desc}</span>
+                </div>
+                
             </div>
-        </li>
+        </a>
         `;
         item.innerHTML = markup;
 
