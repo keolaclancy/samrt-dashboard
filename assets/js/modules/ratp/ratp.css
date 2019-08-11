@@ -3,14 +3,9 @@
     src: url("fonts/digital-7-mono.ttf");
     }
 
-.ratp-title {
-    color: white;
-    text-align: center;
-}
-
 .digital {
     font-family: 'Digital';
-    font-size: 3rem;
+    font-size: 2rem;
     color: yellowgreen;
     text-shadow: 0 0 1px rgba(255, 255, 255, .8);
 }

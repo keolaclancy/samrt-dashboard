@@ -12,25 +12,29 @@ config = {
         'ratp',
         'unsplash',
         'motd',
+        'drupal',
     ],
 
     /**
      * API Configs.
      */
-    api : {
-        weather : {
+    api: {
+        weather: {
             endpoint: 'https://fcc-weather-api.glitch.me/api/current',
         },
-        ratp : {
+        ratp: {
             endpoint: 'https://api-ratp.pierre-grimaud.fr/v4',
         },
-        unsplash : {
+        unsplash: {
             endpoint: 'https://api.unsplash.com',
             access: 'YOUR_ACCESS_KEY',
             query: 'nature',
         },
         motd: {
             endpoint: 'https://api.adviceslip.com/advice',
+        },
+        drupal: {
+            endpoint: 'https://www.drupal.org/api-d7/node.json',
         }
     },
 }

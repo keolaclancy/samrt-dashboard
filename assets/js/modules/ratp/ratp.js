@@ -26,7 +26,7 @@
     function buildMarkup(data) {
         // Create the markup of the weather tile.
         let markup = `
-    <h3 class="ratp-title">Prochain métros</h3>
+    <h3 class="item-title">Prochain métros</h3>
     <div>Ligne: <span class="bold">${options.line}</span></div>
     <div>De: <span class="bold">${options.station}</span></div>
     <div>Destination: <span class="bold">${data.result.schedules[0].destination}</span></div>
